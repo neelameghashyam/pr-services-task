@@ -7,26 +7,15 @@ import { RouterLink } from '@angular/router';
   selector: 'app-header',
   imports: [PrimaryButtonComponent,RouterLink],
   template: `
-    <div class="header-container">
-      <span routerLink="/"> My Store</span>
-      <app-primary-button [label] = "'Cart('+cartService.cart().length+')'" 
+    <div
+      class="bg-slate-100 px-4 py-3 shadow-md flex justify-between items-center"
+    >
+<button class="text-2xl" routerLink="/">My Store</button>      <app-primary-button [label] = "'Cart('+cartService.cart().length+')'" 
       routerLink="/cart"
       />
     </div>
   `,
   styles: [`
-    .header-container {
-      background-color: #f8fafc; /* Tailwind's bg-slate-100 */
-      padding: 12px 16px; /* Equivalent to px-4 py-3 */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-md */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    span {
-      font-weight: bold;
-      font-size: 1.25rem;
-    }
   `]
 })
 export class HeaderComponent {

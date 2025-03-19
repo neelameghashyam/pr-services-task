@@ -7,14 +7,14 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
   selector: 'app-cart',
   imports: [CartItemComponent,OrderSummaryComponent],
   template: `
-   <div>
-    <h2>Shopping Cart</h2>
-    @for(item of cartService.cart();track item.id){
-    <app-cart-item [item]="item"/>
-    }
+   <div class="p-6 flex flex-col gap-4">
+      <h2 class="text-2xl">Shopping cart</h2>
 
-    <app-order-summary />
-   </div>
+      @for (item of cartService.cart(); track item.id) {
+      <app-cart-item [item]="item" />
+      }
+      <app-order-summary />
+    </div>
   `,
   styles: ``
 })

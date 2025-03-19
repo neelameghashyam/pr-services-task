@@ -6,23 +6,13 @@ import { ProductCardComponent } from './product-card/product-card.component';
   selector: 'app-products-list',
   imports: [ProductCardComponent],
   template: `
-    <div class="container">
-  <div class="row">
-    @for (product of products(); track product.id) {
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <app-product-card [product]="product"></app-product-card>
-      </div>
-    }
-  </div>
-</div>
-
+    <div class="p-8 grid grid-cols-2 gap-4">
+      @for (product of products(); track product.id) {
+      <app-product-card [product]="product" />
+      }
+    </div>
   `,
-  styles: `
-  .container {
-      max-width: 5200px;
-    }
-    
-  `
+  styles: ``
 }) 
 export class ProductsListComponent {
 products=signal<Product[]>([

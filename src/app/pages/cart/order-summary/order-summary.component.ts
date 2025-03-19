@@ -6,42 +6,18 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
   selector: 'app-order-summary',
   imports: [PrimaryButtonComponent],
   template: `
-    <div class="order-summary card p-4 shadow-sm">
-  <h2 class="order-summary-title mb-4">Order Summary</h2>
-  
-  <div class="d-flex justify-content-between mb-3">
-    <span class="fw-bold">Total:</span>
-    <span class="order-summary-total">{{ '$ ' + total() }}</span>
-  </div>
-  
-  <div class="text-center">
-    <app-primary-button label="Proceed to checkout" class=" btn-primary btn-block" />
-  </div>
-</div>
-
+    <div class="bg-slate-100 p-6 rounded-xl shadow-xl border">
+      <h2 class="text-2xl">Order Summary</h2>
+      <div class="flex flex-col gap-4">
+        <div class="flex gap-4">
+          <span class="text-lg">Total</span>
+          <span class="text-lg font-bold">{{ '$ ' + total() }}</span>
+        </div>
+        <app-primary-button label="Proceed to checkout" />
+      </div>
+    </div>
   `,
-  styles: `
-  .order-summary {
-  background-color: #fff; /* White background for the card */
-  border-radius: 10px; /* Rounded corners */
-  max-width: 400px; /* Set a max width for the order summary */
-  margin: 0 auto; /* Center the order summary */
-}
-
-.order-summary-title {
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.order-summary-total {
-  font-size: 1.25rem;
-  color: #28a745; /* Bootstrap success color */
-}
-
-.btn-block {
-  width: 100%; /* Make the button fill the width */
-}
-`
+  styles: ``,
 })
 export class OrderSummaryComponent {
 cartService=inject(CartService)

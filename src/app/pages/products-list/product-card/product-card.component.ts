@@ -7,47 +7,35 @@ import { CartService } from '../../../services/cart.service';
   selector: 'app-product-card',
   imports: [PrimaryButtonComponent],
   template: `
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" [src]="product().image" alt="{{ product().title }}">
-      <div class="card-body">
-        <h5 class="card-title">{{ product().title }}</h5>
-        <p class="card-text">
-          <strong>Price:</strong> \${{ product().price }}
-        </p>
-        <p [style.color]="product().stock ? 'green' : 'red'">
-          {{ product().stock ? product().stock +" left" : 'Out of Stock' }}
-        </p>
-       <app-primary-button
-          label="Add to Cart"
-          (btnClicked)="cartService.addToCart(product())"
+     <div
+      class="bg-white shadow-md border rounded-xl p-6 flex flex-col gap-6 relative"
+    >
+      <div class="mx-auto">
+        <img
+          [src]="product().image"
+          class="w-[200px] h-[100px] object-contain"
         />
       </div>
+      <div class="flex flex-col">
+        <span class="text-md font-bold">{{ product().title }}</span>
+        <span class="text-sm"> {{ '$' + product().price }}</span>
+        <app-primary-button
+          (btnClicked)="cartService.addToCart(product())"
+          class="mt-3"
+          label="Add to Cart"
+        />
+      </div>
+
+      <span
+        class="absolute top-2 right-3 text-sm font-bold"
+        [class]="product().stock ? 'text-green-500' : 'text-red-500'"
+      >
+        @if (product().stock) {
+        {{ product().stock }} left } @else { Out of stock }
+      </span>
     </div>
   `,
-  styles: [`
-    .card {
-      margin: 10px;
-      border: 1px solid #dee2e6;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-img-top {
-      height: 300px;
-      object-fit: auto;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-
-    .card-text {
-      margin-bottom: 8px;
-    }
-  `]
+  styles:``
 })
 export class ProductCardComponent {
   cartService=inject(CartService)
